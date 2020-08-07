@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+</html>
+
+<script>
+
+
+function computerPlay () {
+    let computerChoice = null
+    let num = Math.floor(Math.random() * 3)
+    switch(num) {
+        case 0:
+            computerChoice = 'rock'
+            return computerChoice;
+            break;
+        case 1:
+            computerChoice = 'paper'
+            return computerChoice;
+            break;
+        case 2: 
+            computerChoice = 'scissors'
+            return computerChoice;
+            break;
+
+    
+
+    }
+}
+
+function playerPlay() {
+    let choice = null
+
+    while (true) {
+
+    switch(prompt('Rock, Paper, or Scissors?').toLowerCase()) {
+        case 'rock':
+            choice = 'rock'
+            return choice;
+            break;
+        case 'paper':
+            choice = 'paper'
+            return choice
+            break;
+        case 'scissors':
+            choice = 'scissors'
+            return choice
+            break;
+
+    }
+    }
+}
+
+        
+
+
+function playRound (playerSelection, computerSelection){
+
+    score = [0, 0]
+
+    if (playerSelection == computerSelection){
+        console.log(`Tie! ${playerSelection} vs ${computerSelection}!`)
+    }
+
+    else if (playerSelection == 'paper' && computerSelection == 'rock' ){
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`)
+        score[0] += 1;
+    }
+
+    else if (playerSelection == 'rock' && computerSelection == 'scissors' ){
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`)
+        score[0] += 1;
+    }
+
+    else if (playerSelection == 'scissors' && computerSelection == 'paper' ){
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`)
+        score[0] += 1;
+    }
+
+    else if (playerSelection == 'rock' && computerSelection == 'paper' ){
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`)
+        score[1] += 1;
+    }
+
+    else if (playerSelection == 'paper' && computerSelection == 'scissors' ){
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`)
+        score[1] += 1;
+    }
+
+    else if (playerSelection == 'scissors' && computerSelection == 'rock' ){
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`)
+        score[1] += 1;
+    }
+
+    else {
+        console.log(`WTF ${playerSelection} ${computerSelection}`)
+    }
+
+    return score;
+
+}
+
+function game () {
+    let i = 0
+    let playerScore = 0
+    let computerScore = 0
+    score = [0,0]
+
+while (i < 5) {
+    score = playRound(playerPlay(), computerPlay())
+    playerScore += score[0]
+    computerScore += score[1]
+    i++
+}
+
+
+    console.log(`SCORE
+You: ${playerScore}
+Computer: ${computerScore}`)
+
+}
+
+
+game()
+</script>
